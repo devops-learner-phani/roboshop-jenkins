@@ -10,3 +10,8 @@ multibranchJob:
   - { jobName: "dispatch" , folderName: "CI-Pipeline/" , repoName: "dispatch" , componentName: "dispatch" }
   - { jobName: "frontend" , folderName: "CI-Pipeline/" , repoName: "frontend" , componentName: "frontend" }
 
+pipelineJob:
+  - { jobName: "Deploy-to-any-dev" , folderName: "" , repoName: "roboshop-jenkins" , fileName: "Jenkinsfile-any-env-deploy"}
+
+
+
