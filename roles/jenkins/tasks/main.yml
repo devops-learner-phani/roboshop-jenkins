@@ -1,9 +1,19 @@
-- name: Create a jenkins pipeline job using the token
+- name: Create a jenkins folder using the token
   community.general.jenkins_job:
-    config: "{{ lookup('template', '/tmp/pipeline.xml') }}"
-    name: "test"
+    config: "{{ lookup('template', 'folder.xml') }}"
+    name: "{{item.name}}"
     token: "119f3d009eefbca2859f1696169f1cd366"
     url: "http://jenkins.devopslearner.online:8080"
     user: "admin"
   loop:
-    - { repoName: "cart" , componentName: "cart" }
+    - { name: "CI-Pipeline" , description: "CI Pipeline for roboshop components" }
+
+- name: Create a jenkins pipeline job using the token
+  community.general.jenkins_job:
+    config: "{{ lookup('template', 'pipeline.xml') }}"
+    name: "{{item.folderName}}{{item.jobName}}"
+    token: "119f3d009eefbca2859f1696169f1cd366"
+    url: "http://jenkins.devopslearner.online:8080"
+    user: "admin"
+  loop:
+    - { jobName: "cart" , folderName: "CI-Pipeline/" , repoName: "cart" , componentName: "cart" }
